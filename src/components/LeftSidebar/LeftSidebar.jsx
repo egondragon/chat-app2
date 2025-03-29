@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const LeftSidebar = () => {
 
     const navigate = useNavigate();
-    const {userData, chatData} = useContext(AppContext);
+    const {userData, chatData, chatUser, setChatUser, setMessagesId, messagesId} = useContext(AppContext);
     const [user, setUser] = useState(null);
     const [showSearch, setShowSearch] = useState(false);
     
@@ -25,7 +25,7 @@ const LeftSidebar = () => {
 		const q = query(userRef, where("username", "==", input.toLowerCase()));
 		const querySnap = await getDocs(q);
 		if (!querySnap.empty && querySnap.docs[0].data().id !== userData.id) {
-		    let userExit = false;
+		    let userExist = false;
 		    chatData.map((user) => {
 			if (user.rId === querySnap.docs[0].data().id) {
 			    userExist = true;
@@ -86,7 +86,8 @@ const LeftSidebar = () => {
     }
 
     const setChat = async (item) => {
-	console.log(item);
+	setMessagesId(item.messageId);
+	setChatUser(item);
     }
     
     return (
