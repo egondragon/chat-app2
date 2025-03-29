@@ -1,8 +1,0 @@
-MONGODB_URI=mongodb+srv://egondragon:Libellule123@cluster0.qvjuk.mongodb.net/chat_db?retryWrites=true&w=majority&appName=Cluster0
-
-PORT=5001
-
-JWT_SECRET=mysecretkey
-NODE_ENV=development
-
-
